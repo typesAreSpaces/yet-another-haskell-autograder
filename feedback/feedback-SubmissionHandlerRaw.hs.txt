@@ -1,0 +1,76 @@
+Basic arithmetic - Part 1:
+          Use (+) to add two numbers
+
+    PASS  Exercise 1
+          Input: (+) 2 2
+          Test:  (\ans -> ans == 4)
+          Your code returned:  4
+
+    PASS  Exercise 2
+          Input: (+) 3 2
+          Test:  (\ans -> ans == 5)
+          Your code returned:  5
+
+    Score: [2/2]
+
+Basic arithmetic - Part 2:
+          Use (*) to multiply two numbers
+
+    PASS  Exercise 1
+          Input: (*) 2 2
+          Test:  (\ans -> ans == 4)
+          Your code returned:  4
+
+    PASS  Exercise 2
+          Input: (*) 3 2
+          Test:  (\ans -> ans == 6)
+          Your code returned:  6
+
+    Score: [2/2]
+
+Using lists:
+          Hmm typed languages
+
+    FAIL  Exercise 6
+          Input: g 10
+          Test:  (\ans -> (length ans) == 11)
+          Your code returned:  [1,2,3,4,5,6,7,8,9,10]
+
+    Score: [0/1]
+
+Basic arithmetic - Part 1 - again:
+          Use (+) to add two numbers
+
+    FAIL  Exercise 1
+          Input: (+) 2 2
+          Test:  (\ans -> ans == 3)
+          Your code returned:  4
+
+    PASS  Exercise 2
+          Input: (+) 3 2
+          Test:  (\ans -> ans == 5)
+          Your code returned:  5
+
+    Score: [1/2]
+
+Basic arithmetic - Part 2 - again:
+          Use (*) to multiply two numbers
+
+    PASS  Exercise 3
+          Input: (*) 2 2
+          Test:  (\ans -> ans == 4)
+          Your code returned:  4
+
+    FAIL  Exercise 4
+          Input: (*) 3 2
+          Test:  (\ans -> ans == 5)
+          Your code returned:  6
+
+    PASS  Exercise 5
+          Input: f 1
+          Test:  (\ans -> ans == 2)
+          Your code returned:  2
+
+    Score: [2/3]
+
+Total: [7/10]

@@ -1,0 +1,51 @@
+Dot product:
+          
+
+    PASS  Test 1
+          Input: dot [0, 0, 1] [0, 1, 0]
+          Test:  (\ans -> ans == 0)
+          Your code returned:  0
+
+    PASS  Test 2
+          Input: dot [0, 0, 1] [0, 1, 1]
+          Test:  (\ans -> ans == 1)
+          Your code returned:  1
+
+    PASS  Test 3
+          Input: dot [1, 0, 1] [1, 1, 1]
+          Test:  (\ans -> ans == 2)
+          Your code returned:  2
+
+    PASS  Test 4
+          Input: dot [-1, 1, 2] [1, -1, 1]
+          Test:  (\ans -> ans == 0)
+          Your code returned:  0
+
+    Score: [4/4]
+
+numbers:
+          
+
+    PASS  Test 1
+          Input: numbers [1 .. 4]
+          Test:  (\ans -> ans == 1234)
+          Your code returned:  1234
+
+    FAIL  Test 2
+          Input: numbers [10 .. 15]
+          Test:  (\ans -> ans == 101112131415)
+          Your code returned:  1123455
+
+    FAIL  Test 3
+          Input: numbers [1 .. 10]
+          Test:  (\ans -> ans == 12345678910)
+          Your code returned:  1234567900
+
+    PASS  Test 4
+          Input: numbers [1 .. 1]
+          Test:  (\ans -> ans == 1)
+          Your code returned:  1
+
+    Score: [2/4]
+
+Total: [6/8]
