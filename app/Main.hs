@@ -2,14 +2,11 @@
 
 module Main (main) where
 
-import Tester        ( errorString
-                     , handleProblems )
+import Tester        ( handleProblems )
 import HomeworkTests ( homeworkTests  )
 
 import qualified System.Environment           as Env
-import qualified System.Exit                  as Exit
 import qualified System.Directory             as Dir
-import qualified Language.Haskell.Interpreter as HInt
 
 main :: IO Int
 main =
@@ -24,30 +21,8 @@ main =
         putStrLn "Feedback exists and overwrite wasn't enabled"
         return 0
       else do
-        processProblems feedbackFile submissionFile       
+        handleProblems feedbackFile submissionFile homeworkTests
+        return 0
     else do
-      processProblems feedbackFile submissionFile       
-
-processProblems :: String -> String -> IO Int
-processProblems feedbackFile submissionFile = do 
-  output <- HInt.runInterpreter
-            $ handleProblems feedbackFile submissionFile homeworkTests
-  case output of
-    Left err@(HInt.WontCompile _)
-      -> do
-      putStrLn $ errorString err
-      Exit.exitWith (Exit.ExitFailure 1)
-    Left err@(HInt.UnknownError _)
-      -> do
-      putStrLn $ errorString err
-      Exit.exitWith (Exit.ExitFailure 2)
-    Left err@(HInt.NotAllowed _)
-      -> do
-      putStrLn $ errorString err
-      Exit.exitWith (Exit.ExitFailure 3)
-    Left err@(HInt.GhcException _)
-      -> do
-      putStrLn $ errorString err
-      Exit.exitWith (Exit.ExitFailure 4)
-    Right _
-      -> Exit.exitWith Exit.ExitSuccess
+      handleProblems feedbackFile submissionFile homeworkTests
+      return 0

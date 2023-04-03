@@ -11,112 +11,112 @@ ENABLE_OVERWRITE=$6
 # $1: Initial testcases file
 # $2: Target testcases file
 process_testcases_file(){
-    rm -rf "$2"
-    touch "$2"
-    echo -e "module HomeworkTests ( homeworkTests ) where\n" >> "$2"
-    echo -e "import Grader\n" >> "$2"
-    cat "$1" >> "$2"
-    pushd "$PROJECT_DIR" && stack build --copy-bins && popd
+  rm -rf "$2"
+  touch "$2"
+  echo -e "module HomeworkTests ( homeworkTests ) where\n" >> "$2"
+  echo -e "import Grader\n" >> "$2"
+  cat "$1" >> "$2"
+  pushd "$PROJECT_DIR" && stack build --copy-bins && popd
 }
 
 # $1: Initial submission file
 # $2: Target submission file
 process_submission_file(){
-    rm -rf "$2"
-    touch "$2"
-    echo -e "module SubmissionHandler where\n" >> "$2"
-    cat "$1" >> "$2"
+  rm -rf "$2"
+  touch "$2"
+  echo -e "module SubmissionHandler where\n" >> "$2"
+  sed '/module/,/where/d' "$1" >> "$2"
 }
 
 # $1: Exit code
 # $2: Submission file
 process_syntax_errors_subs(){
-    if [ "$1" -eq "0" ]; then
-	echo "No syntax errors reported";
-    else
-	if [ "$1" -eq 1 ]; then
-	    echo "Submission $2 has compilation errors";
-	fi;
-	if [ "$1" -eq 2 ]; then
-	    echo "Submission $2 has unknown errors";
-	fi;
-	if [ "$1" -eq 3 ]; then
-	    echo "Submission $2 triggered a NotAllowed error";
-	fi;
-	if [ "$1" -eq 4 ]; then
-	    echo "Submission $2 triggered GhcException";
-	fi;
-	[ ! -d "$WITH_ERRORS_DIR" ] && mkdir -p "$WITH_ERRORS_DIR"
-	cp "$2" "$WITH_ERRORS_DIR"
-    fi
+  if [ "$1" -eq "0" ]; then
+    echo "No syntax errors reported";
+  else
+    if [ "$1" -eq 1 ]; then
+      echo "Submission $2 has compilation errors";
+    fi;
+    if [ "$1" -eq 2 ]; then
+      echo "Submission $2 has unknown errors";
+    fi;
+    if [ "$1" -eq 3 ]; then
+      echo "Submission $2 triggered a NotAllowed error";
+    fi;
+    if [ "$1" -eq 4 ]; then
+      echo "Submission $2 triggered GhcException";
+    fi;
+    [ ! -d "$WITH_ERRORS_DIR" ] && mkdir -p "$WITH_ERRORS_DIR"
+    cp "$2" "$WITH_ERRORS_DIR"
+  fi
 }
 
 # $1: Test file
 # $2: Submission file
 single_file(){
-    HOMEWORKTEST_FILE="$PROJECT_DIR/src/HomeworkTests.hs"
-    process_testcases_file "$1" "$HOMEWORKTEST_FILE"
+  HOMEWORKTEST_FILE="$PROJECT_DIR/src/HomeworkTests.hs"
+  process_testcases_file "$1" "$HOMEWORKTEST_FILE"
 
-    [ ! -f "$GRADER" ] && \
-	echo "Grader not available" && return;
-    [ ! -f "$2" ] && \
-	echo "No submission file avaiable" && return 
+  [ ! -f "$GRADER" ] && \
+    echo "Grader not available" && return;
+      [ ! -f "$2" ] && \
+        echo "No submission file avaiable" && return 
 
-    echo "Grading submission: $2"
-    CLONED_FILE="$(dirname "$sub")/SubmissionHandler.hs"
-    #cp "$2" "$CLONED_FILE"
-    process_submission_file "$2" "$CLONED_FILE"
+      echo "Grading submission: $2"
+      CLONED_FILE="$(dirname "$sub")/SubmissionHandler.hs"
+      #cp "$2" "$CLONED_FILE"
+      process_submission_file "$2" "$CLONED_FILE"
 
-    "$GRADER" "$CLONED_FILE" \
-	      "feedback-$(basename "$2").txt" \
-	      "$ENABLE_OVERWRITE"
-    process_syntax_errors_subs $? $2 
+      "$GRADER" "$CLONED_FILE" \
+        "feedback-$(basename "$2").txt" \
+        "$ENABLE_OVERWRITE"
+              process_syntax_errors_subs $? $2 
 
     # Remove copy of submission file
     rm -rf "$CLONED_FILE"
-}
+  }
 
 # $1: Test file
 # $2: Submission directory
 # $3: Feedback directory
 multiple_files(){
-    HOMEWORKTEST_FILE="$PROJECT_DIR/src/HomeworkTests.hs"
-    process_testcases_file "$1" "$HOMEWORKTEST_FILE"
+  HOMEWORKTEST_FILE="$PROJECT_DIR/src/HomeworkTests.hs"
+  process_testcases_file "$1" "$HOMEWORKTEST_FILE"
 
-    [ ! -f "$GRADER" ] && \
-	echo "Grader not available" && return;
-    [ ! -d "$2" ] && \
-	echo "No submission directory avaiable" && return 
-    [ ! "$(ls -A "$2")" ] && \
-	echo "Submission directory is empty" && return 
+  [ ! -f "$GRADER" ] && \
+    echo "Grader not available" && return;
+      [ ! -d "$2" ] && \
+        echo "No submission directory avaiable" && return 
+              [ ! "$(ls -A "$2")" ] && \
+                echo "Submission directory is empty" && return 
 
-    for sub in "$2"/*.hs; do
-	echo "Grading submission: $sub"
-	CLONED_FILE="$(dirname "$sub")/SubmissionHandler.hs"
-	#cp "$sub" "$CLONED_FILE"
-	process_submission_file "$sub" "$CLONED_FILE"
+              for sub in "$2"/*.hs; do
+                echo "Grading submission: $sub"
+                CLONED_FILE="$(dirname "$sub")/SubmissionHandler.hs"
+                #cp "$sub" "$CLONED_FILE"
+                process_submission_file "$sub" "$CLONED_FILE"
 
-	rm -rf ""$3"/feedback-$(basename "$sub").txt";
-	"$GRADER" "$CLONED_FILE" \
-		  ""$3"/feedback-$(basename "$sub").txt" \
-		  "$ENABLE_OVERWRITE";
-	process_syntax_errors_subs $? "$sub"
+                rm -rf ""$3"/feedback-$(basename "$sub").txt";
+                "$GRADER" "$CLONED_FILE" \
+                  ""$3"/feedback-$(basename "$sub").txt" \
+                  "$ENABLE_OVERWRITE";
+                                  process_syntax_errors_subs $? "$sub"
 
-	# Remove copy of submission file
-	rm -rf "$CLONED_FILE"
-    done
+  # Remove copy of submission file
+  rm -rf "$CLONED_FILE"
+done
 }
 
 if [ -z "$FEEDBACK_DIR" ]; then
-    FEEDBACK_DIR='feedback'
+  FEEDBACK_DIR='feedback'
 fi;
 
 [ -z "$SUBMISSION" ] && echo "Missing submission info" && return;
 [ -z "$TESTCASES_FILE" ] && echo "Missing test file info" && return;
 
 if [ -d "$SUBMISSION" ]; then
-    [ ! -d "$FEEDBACK_DIR" ] && mkdir -p "$FEEDBACK_DIR"
-    multiple_files "$TESTCASES_FILE" "$SUBMISSION" "$FEEDBACK_DIR";
+  [ ! -d "$FEEDBACK_DIR" ] && mkdir -p "$FEEDBACK_DIR"
+  multiple_files "$TESTCASES_FILE" "$SUBMISSION" "$FEEDBACK_DIR";
 else
-    single_file "$TESTCASES_FILE" "$SUBMISSION";
+  single_file "$TESTCASES_FILE" "$SUBMISSION";
 fi;

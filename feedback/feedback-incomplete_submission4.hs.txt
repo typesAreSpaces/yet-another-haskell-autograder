@@ -1,2 +1,39 @@
 Dot product:
           
+          ERROR: Won't compile:
+Variable not in scope: dot :: [a0] -> [a1] -> t
+Perhaps you meant ‘not’ (imported from Prelude)
+
+          ERROR: Won't compile:
+Variable not in scope: dot :: [a0] -> [a1] -> t
+Perhaps you meant ‘not’ (imported from Prelude)
+
+          ERROR: Won't compile:
+Variable not in scope: dot :: [a0] -> [a1] -> t
+Perhaps you meant ‘not’ (imported from Prelude)
+
+          ERROR: Won't compile:
+Variable not in scope: dot :: [a0] -> [a1] -> t
+Perhaps you meant ‘not’ (imported from Prelude)
+
+
+    Score: [0/4]
+
+numbers:
+          
+          ERROR: Won't compile:
+Variable not in scope: numbers :: [a0] -> t
+
+          ERROR: Won't compile:
+Variable not in scope: numbers :: [a0] -> t
+
+          ERROR: Won't compile:
+Variable not in scope: numbers :: [a0] -> t
+
+          ERROR: Won't compile:
+Variable not in scope: numbers :: [a0] -> t
+
+
+    Score: [0/4]
+
+Total: [0/8]

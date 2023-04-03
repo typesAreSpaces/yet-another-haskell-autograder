@@ -49,19 +49,26 @@ showTotal :: C.Color -> Int -> Int -> String
 showTotal color scored total =
     C.paint color $ printf "Total: [%d/%d]" scored total
 
-showTest :: Test -> Bool -> String -> String
-showTest
-  (Test cName _ expr handler _)
-  isCorrect
-  studentAnswer = 
+showTestHeader :: Test -> Bool -> String
+showTestHeader
+  (Test cName _ _ _ _)
+  isCorrect = 
     let
         label = if isCorrect then C.paint C.Green "PASS" else C.paint C.Red "FAIL"
         header = printf "    %s  %s\n" label cName
+    in header
+
+showTestFeedback :: Test -> Bool -> String -> String
+showTestFeedback
+  (Test _ _ expr handler _)
+  isCorrect
+  studentAnswer = 
+    let
         feedback1 = printf "          Input: %s\n          Test:  %s\n"
           expr handler
         feedback2 = printf "          Your code returned:  %s\n"
           $ C.paint (if isCorrect then C.Green else C.Red) studentAnswer
-    in header ++ feedback1 ++ feedback2
+    in feedback1 ++ feedback2
 
 showProblemResult :: Problem -> [Int] -> String
 showProblemResult problem scores =
