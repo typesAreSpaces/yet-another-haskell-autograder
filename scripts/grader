@@ -26,6 +26,7 @@ process_submission_file(){
   touch "$2"
   echo -e "module SubmissionHandler where\n" >> "$2"
   sed '/module/,/where/d' "$1" >> "$2"
+  sed -i.bu '/module/d' "$2"
 }
 
 # $1: Exit code
