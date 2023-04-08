@@ -31,3 +31,13 @@ To evaluate a several submissions in the directory `submissions` execute the com
 
 `feeback` and `with-errors` are directories where the feedback and copies of faulty submissions 
 is stored. `<ENABLE-OVERWRITE>` is a variable that allows the grader to overwrite already existing feedback files by setting it to `1`. To disable this feature use `0`.
+
+## Acknowledgements
+
+The following projects serve as inspiration for this project:
+
+- [haskell-autograder](https://github.com/danalizieors/haskell-autograder): 
+  - Color support was taking from it.
+  - Overall design is similar but scores are given to each test instead of each problem.
+  - This project uses string comparisions to test submissions. Our project relies on the library [hint](https://github.com/haskell-hint/hint) to evaluate haskell code.
+- [haskelltester](https://github.com/sweirich/haskelltester): 
