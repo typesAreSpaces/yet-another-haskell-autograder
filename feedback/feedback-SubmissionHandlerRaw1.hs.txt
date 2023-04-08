@@ -1,76 +1,73 @@
-Basic arithmetic - Part 1:
-          Use (+) to add two numbers
+stutter:
+          
+          ERROR: Won't compile:
+Variable not in scope: stutter :: String -> t
 
-    PASS  Exercise 1
-          Input: (+) 2 2
-          Test:  (\ans -> ans == 4)
-          Your code returned:  4
+          ERROR: Won't compile:
+Variable not in scope: stutter :: [a0] -> t
 
-    PASS  Exercise 2
-          Input: (+) 3 2
-          Test:  (\ans -> ans == 5)
-          Your code returned:  5
+          ERROR: Won't compile:
+Variable not in scope: stutter :: [a0] -> t
 
-    Score: [2/2]
+          ERROR: Won't compile:
+Variable not in scope: stutter :: [a0] -> t
 
-Basic arithmetic - Part 2:
-          Use (*) to multiply two numbers
 
-    PASS  Exercise 1
-          Input: (*) 2 2
-          Test:  (\ans -> ans == 4)
-          Your code returned:  4
+    Score: [0/4]
 
-    PASS  Exercise 2
-          Input: (*) 3 2
-          Test:  (\ans -> ans == 6)
-          Your code returned:  6
+compress:
+          
 
-    Score: [2/2]
+    Score: [0/0]
 
-Using lists:
-          Hmm typed languages
+findIndices:
+          
 
-    FAIL  Exercise 6
-          Input: g 10
-          Test:  (\ans -> (length ans) == 11)
-          Your code returned:  [1,2,3,4,5,6,7,8,9,10]
+    Score: [0/0]
 
-    Score: [0/1]
+isPrefixOf:
+          
 
-Basic arithmetic - Part 1 - again:
-          Use (+) to add two numbers
+    Score: [0/0]
 
-    FAIL  Exercise 1
-          Input: (+) 2 2
-          Test:  (\ans -> ans == 3)
-          Your code returned:  4
+isSuffixOf:
+          
 
-    PASS  Exercise 2
-          Input: (+) 3 2
-          Test:  (\ans -> ans == 5)
-          Your code returned:  5
+    Score: [0/0]
 
-    Score: [1/2]
+Dot product:
+          
 
-Basic arithmetic - Part 2 - again:
-          Use (*) to multiply two numbers
+    Score: [0/0]
 
-    PASS  Exercise 3
-          Input: (*) 2 2
-          Test:  (\ans -> ans == 4)
-          Your code returned:  4
+increasing:
+          
 
-    FAIL  Exercise 4
-          Input: (*) 3 2
-          Test:  (\ans -> ans == 5)
-          Your code returned:  6
+    Score: [0/0]
 
-    PASS  Exercise 5
-          Input: f 1
-          Test:  (\ans -> ans == 2)
-          Your code returned:  2
+decimate:
+          
 
-    Score: [2/3]
+    Score: [0/0]
 
-Total: [7/10]
+encipher:
+          
+
+    Score: [0/0]
+
+prefixSum:
+          
+
+    Score: [0/0]
+
+select:
+          
+
+    Score: [0/0]
+
+numbers:
+          
+
+    Score: [0/0]
+
+Total: [0/4]

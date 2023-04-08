@@ -51,7 +51,7 @@ handleTest
     sayH feedbackFile "\n"
     sandboxedResult <- HInt.liftIO
       $ Excpt.try
-      $ Timeout.timeout 1000
+      $ Timeout.timeout 3000000
       $ Excpt.evaluate (currTest exprToVal) :: HInterp SandBoxedResult
     case sandboxedResult of
       Left excpt

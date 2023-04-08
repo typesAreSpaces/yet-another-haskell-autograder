@@ -5,8 +5,8 @@ module Main (main) where
 import Tester        ( handleProblems )
 import HomeworkTests ( homeworkTests  )
 
-import qualified System.Environment           as Env
-import qualified System.Directory             as Dir
+import qualified System.Environment as Env
+import qualified System.Directory   as Dir
 
 main :: IO Int
 main =

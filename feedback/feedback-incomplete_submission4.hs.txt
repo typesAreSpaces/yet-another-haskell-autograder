@@ -1,39 +1,73 @@
-Dot product:
+stutter:
           
           ERROR: Won't compile:
-Variable not in scope: dot :: [a0] -> [a1] -> t
-Perhaps you meant ‘not’ (imported from Prelude)
+Variable not in scope: stutter :: String -> t
 
           ERROR: Won't compile:
-Variable not in scope: dot :: [a0] -> [a1] -> t
-Perhaps you meant ‘not’ (imported from Prelude)
+Variable not in scope: stutter :: [a0] -> t
 
           ERROR: Won't compile:
-Variable not in scope: dot :: [a0] -> [a1] -> t
-Perhaps you meant ‘not’ (imported from Prelude)
+Variable not in scope: stutter :: [a0] -> t
 
           ERROR: Won't compile:
-Variable not in scope: dot :: [a0] -> [a1] -> t
-Perhaps you meant ‘not’ (imported from Prelude)
+Variable not in scope: stutter :: [a0] -> t
 
 
     Score: [0/4]
+
+compress:
+          
+
+    Score: [0/0]
+
+findIndices:
+          
+
+    Score: [0/0]
+
+isPrefixOf:
+          
+
+    Score: [0/0]
+
+isSuffixOf:
+          
+
+    Score: [0/0]
+
+Dot product:
+          
+
+    Score: [0/0]
+
+increasing:
+          
+
+    Score: [0/0]
+
+decimate:
+          
+
+    Score: [0/0]
+
+encipher:
+          
+
+    Score: [0/0]
+
+prefixSum:
+          
+
+    Score: [0/0]
+
+select:
+          
+
+    Score: [0/0]
 
 numbers:
           
-          ERROR: Won't compile:
-Variable not in scope: numbers :: [a0] -> t
 
-          ERROR: Won't compile:
-Variable not in scope: numbers :: [a0] -> t
+    Score: [0/0]
 
-          ERROR: Won't compile:
-Variable not in scope: numbers :: [a0] -> t
-
-          ERROR: Won't compile:
-Variable not in scope: numbers :: [a0] -> t
-
-
-    Score: [0/4]
-
-Total: [0/8]
+Total: [0/4]
